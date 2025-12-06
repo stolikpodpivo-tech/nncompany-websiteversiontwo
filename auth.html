@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="nntheme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и регистрация - NN Company</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">NN</div>
+                <span class="logo-text">NN Company</span>
+            </a>
+            
+            <button class="mobile-menu-btn" aria-label="Меню">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+                <a href="index.html#about" class="nav-link"><i class="fas fa-info-circle"></i> О нас</a>
+                <a href="index.html#products" class="nav-link"><i class="fas fa-box"></i> Продукты</a>
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Настройки</a>
+                <a href="auth.html" class="nav-link active auth-btn"><i class="fas fa-user"></i> Войти</a>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="themeToggle">
+                        <label for="themeToggle" class="toggle-slider"></label>
+                    </div>
+                    <i class="fas fa-sun"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="auth-container">
+        <div class="container">
+            <div class="auth-wrapper">
+                <!-- Левый блок - Приветствие -->
+                <div class="auth-welcome">
+                    <div class="welcome-content">
+                        <h1>Добро пожаловать в <span class="gradient-text">NN Company</span></h1>
+                        <p class="welcome-subtitle">Войдите в свою учетную запись или создайте новую</p>
+                        
+                        <div class="welcome-features">
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h3>Безопасность</h3>
+                                    <p>Ваши данные защищены современным шифрованием</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-sync"></i>
+                                <div>
+                                    <h3>Синхронизация</h3>
+                                    <p>Настройки сохраняются на всех ваших устройствах</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bolt"></i>
+                                <div>
+                                    <h3>Быстрый доступ</h3>
+                                    <p>Мгновенный доступ ко всем нашим продуктам</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правый блок - Формы -->
+                <div class="auth-forms">
+                    <!-- Вкладки -->
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login">Вход</button>
+                        <button class="auth-tab" data-tab="register">Регистрация</button>
+                    </div>
+
+                    <!-- Форма входа -->
+                    <div class="auth-form active" id="loginForm">
+                        <!-- Google вход -->
+                        <button class="btn-google" id="googleLogin">
+                            <div class="google-icon">
+                                <span class="g-letter">G</span>
+                            </div>
+                            <span>Войти через Google</span>
+                        </button>
+
+                        <div class="separator">
+                            <span>или через email</span>
+                        </div>
+
+                        <!-- Форма email входа -->
+                        <form id="emailLoginForm">
+                            <div class="form-group">
+                                <label for="loginEmail">Email</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="loginEmail" placeholder="Ваш email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loginPassword">Пароль</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="loginPassword" placeholder="Ваш пароль" required>
+                                    <button type="button" class="toggle-password" data-target="loginPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- CAPTCHA -->
+                            <div class="captcha-container">
+                                <div class="captcha-question">
+                                    <span id="captchaQuestion">Сколько будет 7 + 3?</span>
+                                </div>
+                                <input type="text" id="captchaAnswer" placeholder="Введите ответ" required>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="rememberMe">
+                                    <span>Запомнить меня</span>
+                                </label>
+                                <a href="#" class="forgot-password" id="forgotPassword">Забыли пароль?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-sign-in-alt"></i> Войти
+                            </button>
+                        </form>
+
+                        <div class="auth-footer">
+                            <p>Еще нет аккаунта? <a href="#" class="switch-to-register">Зарегистрироваться</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Форма регистрации -->
+                    <div class="auth-form" id="registerForm">
+                        <!-- Шаги регистрации -->
+                        <div class="registration-steps">
+                            <div class="step active" data-step="1">
+                                <div class="step-number">1</div>
+                                <span>Email</span>
+                            </div>
+                            <div class="step" data-step="2">
+                                <div class="step-number">2</div>
+                                <span>Код</span>
+                            </div>
+                            <div class="step" data-step="3">
+                                <div class="step-number">3</div>
+                                <span>Данные</span>
+                            </div>
+                        </div>
+
+                        <!-- Шаг 1: Email -->
+                        <div class="registration-step active" data-step="1">
+                            <form id="emailStepForm">
+                                <div class="form-group">
+                                    <label for="registerEmail">Email адрес</label>
+                                    <div class="input-with-button">
+                                        <div class="input-with-icon">
+                                            <i class="fas fa-envelope"></i>
+                                            <input type="email" id="registerEmail" placeholder="example@mail.com" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" id="sendCodeBtn">
+                                            <i class="fas fa-paper-plane"></i> Отправить код
+                                        </button>
+                                    </div>
+                                    <p class="input-hint">На этот email будет отправлен код подтверждения</p>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Шаг 2: Код подтверждения -->
+                        <div class="registration-step" data-step="2">
+                            <form id="codeStepForm">
+                                <div class="form-group">
+                                    <label for="verificationCode">Код подтверждения</label>
+                                    <div class="code-inputs">
+                                        <input type="text" maxlength="1" class="code-input" inputmode="numeric">
+                                        <input type="text" maxlength="1" class="code-input" inputmode="numeric">
+                                        <input type="text" maxlength="1" class="code-input" inputmode="numeric">
+                                        <input type="text" maxlength="1" class="code-input" inputmode="numeric">
+                                        <input type="text" maxlength="1" class="code-input" inputmode="numeric">
+                                        <input type="text" maxlength="1" class="code-input" inputmode="numeric">
+                                    </div>
+                                    <p class="input-hint">Введите 6-значный код из письма</p>
+                                    <div class="code-timer">
+                                        <i class="fas fa-clock"></i>
+                                        <span id="timer">01:59</span>
+                                        <button type="button" class="btn-link" id="resendCode">Отправить код повторно</button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <i class="fas fa-check"></i> Подтвердить код
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Шаг 3: Данные аккаунта -->
+                        <div class="registration-step" data-step="3">
+                            <form id="finalStepForm">
+                                <div class="form-group">
+                                    <label for="username">Имя пользователя</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="username" placeholder="Придумайте логин" required>
+                                    </div>
+                                    <div class="input-feedback" id="usernameFeedback"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Пароль</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="password" placeholder="Создайте пароль" required>
+                                        <button type="button" class="toggle-password" data-target="password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="password-strength">
+                                        <div class="strength-meter">
+                                            <div class="strength-bar"></div>
+                                        </div>
+                                        <span class="strength-text" id="strengthText">Слабый</span>
+                                    </div>
+                                    <ul class="password-requirements">
+                                        <li data-requirement="length">Минимум 8 символов</li>
+                                        <li data-requirement="uppercase">Заглавные и строчные буквы</li>
+                                        <li data-requirement="numbers">Хотя бы одна цифра</li>
+                                        <li data-requirement="special">Специальный символ</li>
+                                    </ul>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirmPassword">Подтвердите пароль</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="confirmPassword" placeholder="Повторите пароль" required>
+                                        <button type="button" class="toggle-password" data-target="confirmPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="input-feedback" id="confirmFeedback"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="agreeTerms" required>
+                                        <span>Я согласен с <a href="#" class="link">Условиями использования</a> и <a href="#" class="link">Политикой конфиденциальности</a></span>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <i class="fas fa-user-plus"></i> Зарегистрировать аккаунт
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Успешная регистрация -->
+                    <div class="registration-success" id="successScreen" style="display: none;">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2>Регистрация успешна!</h2>
+                        <p>Ваш аккаунт был создан. Выполняется вход в систему...</p>
+                        
+                        <div class="account-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Логин:</span>
+                                <span class="detail-value" id="generatedUsername"></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Пароль:</span>
+                                <span class="detail-value" id="generatedPassword"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="important-note">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Сохраните эти данные в надежном месте. Для безопасности рекомендуем сменить пароль после первого входа.</p>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block" id="goToProfile">
+                            <i class="fas fa-user"></i> Перейти в профиль
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно восстановления пароля -->
+    <div class="modal" id="recoveryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Восстановление пароля</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recoveryEmail">Введите ваш email</label>
+                    <input type="email" id="recoveryEmail" placeholder="email@example.com">
+                </div>
+                <p class="modal-hint">На указанный email будет отправлена инструкция по восстановлению пароля.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelRecovery">Отмена</button>
+                <button class="btn btn-primary" id="sendRecovery">Отправить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомления -->
+    <div class="toast-container"></div>
+
+    <!-- Скрипты -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // ФУНКЦИЯ ДЛЯ ЗАГРУЗКИ ТЕМЫ ИЗ НАСТРОЕК
+        function loadThemeFromSettings() {
+            // Получаем сохраненную тему
+            const savedTheme = localStorage.getItem('nn_theme') || 'nntheme';
+            
+            // Применяем тему к странице
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Обновляем CSS переменные
+            const themes = {
+                nntheme: { 
+                    primary: '#6d28d9', 
+                    primaryDark: '#5b21b6',
+                    primaryLight: '#8b5cf6',
+                    bgPrimary: '#0f172a', 
+                    bgSecondary: '#1e293b',
+                    textPrimary: '#f8fafc',
+                    textSecondary: '#cbd5e1',
+                    borderColor: '#475569'
+                },
+                winter: { 
+                    primary: '#0ea5e9',
+                    primaryDark: '#0284c7',
+                    primaryLight: '#38bdf8',
+                    bgPrimary: '#f0f9ff', 
+                    bgSecondary: '#e0f2fe',
+                    textPrimary: '#0c4a6e',
+                    textSecondary: '#475569',
+                    borderColor: '#bae6fd'
+                },
+                dark: { 
+                    primary: '#8b5cf6',
+                    primaryDark: '#7c3aed',
+                    primaryLight: '#a78bfa',
+                    bgPrimary: '#111827', 
+                    bgSecondary: '#1f2937',
+                    textPrimary: '#f9fafb',
+                    textSecondary: '#d1d5db',
+                    borderColor: '#374151'
+                },
+                light: { 
+                    primary: '#6d28d9',
+                    primaryDark: '#5b21b6',
+                    primaryLight: '#8b5cf6',
+                    bgPrimary: '#ffffff', 
+                    bgSecondary: '#f8fafc',
+                    textPrimary: '#1e293b',
+                    textSecondary: '#64748b',
+                    borderColor: '#e2e8f0'
+                }
+            };
+            
+            const theme = themes[savedTheme] || themes.nntheme;
+            
+            // Применяем все CSS переменные
+            const root = document.documentElement;
+            root.style.setProperty('--primary', theme.primary);
+            root.style.setProperty('--primary-dark', theme.primaryDark);
+            root.style.setProperty('--primary-light', theme.primaryLight);
+            root.style.setProperty('--bg-primary', theme.bgPrimary);
+            root.style.setProperty('--bg-secondary', theme.bgSecondary);
+            root.style.setProperty('--text-primary', theme.textPrimary);
+            root.style.setProperty('--text-secondary', theme.textSecondary);
+            root.style.setProperty('--border-color', theme.borderColor);
+            
+            // Обновляем градиенты
+            root.style.setProperty('--gradient-primary', `linear-gradient(135deg, ${theme.primary} 0%, ${theme.primaryLight} 100%)`);
+            root.style.setProperty('--gradient-secondary', `linear-gradient(135deg, ${theme.bgSecondary} 0%, ${theme.bgPrimary} 100%)`);
+            root.style.setProperty('--gradient-dark', `linear-gradient(135deg, ${theme.bgPrimary} 0%, ${theme.bgSecondary} 100%)`);
+            
+            // Обновляем переключатель темы
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.checked = savedTheme === 'dark';
+            }
+            
+            console.log('Тема применена:', savedTheme);
+        }
+        
+        // ИНИЦИАЛИЗАЦИЯ СТРАНИЦЫ
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Загружаем тему из настроек
+            loadThemeFromSettings();
+            
+            // 2. Инициализация аутентификации
+            if (window.AuthSystem && window.AuthSystem.init) {
+                window.AuthSystem.init();
+            }
+            
+            // 3. Плавное появление страницы
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // 4. Обработчик переключателя темы
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('change', function() {
+                    const newTheme = this.checked ? 'dark' : 'nntheme';
+                    localStorage.setItem('nn_theme', newTheme);
+                    loadThemeFromSettings();
+                    
+                    // Показываем уведомление
+                    if (window.Toast && window.Toast.show) {
+                        window.Toast.show(`Тема изменена на ${newTheme === 'dark' ? 'Темную' : 'NN Theme'}`, 'success');
+                    }
+                });
+            }
+            
+            // 5. Слушаем изменения в localStorage (если меняем тему в другой вкладке)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'nn_theme') {
+                    loadThemeFromSettings();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
